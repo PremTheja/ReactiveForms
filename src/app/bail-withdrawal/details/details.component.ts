@@ -7,14 +7,15 @@ import { BailFormService } from '../../service/bail-form.service';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],  // 👈 required
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent {
+
   form!: FormGroup;
 
   constructor(private bailFormService: BailFormService) {
-    this.form = this.bailFormService.getForm();   // 👈 MUST use service form
+    this.form = this.bailFormService.getForm();   
   }
 }

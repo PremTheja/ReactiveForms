@@ -2,17 +2,19 @@
   <h2>Supreme Court Bail Withdrawal Application</h2>
 
   <!-- Progress -->
-  <p>Section {{ currentStepIndex + 1 }} of 4</p>
+  <p class="progress-text">
+    Section {{ currentStepIndex + 1 }} of 4
+  </p>
 
   <!-- Step list -->
   <ul class="steps">
     <li
-      *ngFor="let step of steps; let i = index"
+      *ngFor="let label of labels; let i = index"
       [class.active]="i === currentStepIndex"
       [class.disabled]="i > currentStepIndex"
       (click)="goToStep(i)"
     >
-      {{ step.label }}
+      {{ label }}
     </li>
   </ul>
 
@@ -29,7 +31,7 @@
 
     <button
       (click)="goNext()"
-      [disabled]="currentStepIndex === steps.length - 1"
+      [disabled]="currentStepIndex === labels.length - 1"
     >
       Next
     </button>

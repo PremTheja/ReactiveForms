@@ -13,6 +13,7 @@ export interface Attachment {
 
 @Injectable({ providedIn: 'root' })
 export class BailFormService {
+
   constructor(private fb: FormBuilder) {}
 
   // One main form for the whole flow
@@ -54,6 +55,8 @@ export class BailFormService {
     return this.attachments;
   }
 
+
+  
   setAttachment(index: number, patch: Partial<Attachment>) {
     this.attachments[index] = { ...this.attachments[index], ...patch };
   }
