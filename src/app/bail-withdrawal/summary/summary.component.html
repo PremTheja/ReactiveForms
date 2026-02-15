@@ -1,0 +1,31 @@
+<h3>Summary</h3>
+
+<section>
+  <h4>Form details <a href="#" (click)="editDetails(); $event.preventDefault()">Edit</a></h4>
+
+  <p><strong>Court:</strong> {{ formValue.court }}</p>
+  <p><strong>Case title:</strong> {{ formValue.caseTitle }}</p>
+  <p><strong>Proceeding title:</strong> {{ formValue.proceedingTitle }}</p>
+  <p><strong>Case number:</strong> {{ formValue.caseNumber }}</p>
+  <p><strong>Proceeding type:</strong> {{ formValue.proceedingType }}</p>
+  <p><strong>Accused name:</strong> {{ formValue.accusedName }}</p>
+
+  <p *ngIf="formValue.referenceCode">
+    <strong>Reference code:</strong> {{ formValue.referenceCode }}
+  </p>
+
+  <p><strong>Reason for withdrawal:</strong></p>
+  <p>{{ formValue.reasonForWithdrawal }}</p>
+</section>
+
+<section>
+  <h4>Attachments <a href="#" (click)="editAttachments(); $event.preventDefault()">Edit</a></h4>
+
+  <ul>
+    <li *ngFor="let att of attachments">
+      {{ att.type }} — {{ att.fileName || 'No file' }} ({{ att.status }})
+    </li>
+  </ul>
+</section>
+
+<button (click)="submit()">Submit Application</button>

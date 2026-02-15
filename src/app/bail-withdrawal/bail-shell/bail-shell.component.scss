@@ -1,0 +1,66 @@
+.shell-container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+
+.steps li {
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #f1f1f1;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.steps li.active {
+  background: #1976d2;
+  color: #fff;
+}
+
+.steps li.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.step-content {
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background: #fafafa;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #1976d2;
+  color: #fff;
+}
+
+button[disabled] {
+  background: #aaa;
+  cursor: not-allowed;
+}

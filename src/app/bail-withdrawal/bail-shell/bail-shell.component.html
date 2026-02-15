@@ -1,0 +1,37 @@
+<div class="shell-container">
+  <h2>Supreme Court Bail Withdrawal Application</h2>
+
+  <!-- Progress -->
+  <p>Section {{ currentStepIndex + 1 }} of 4</p>
+
+  <!-- Step list -->
+  <ul class="steps">
+    <li
+      *ngFor="let step of steps; let i = index"
+      [class.active]="i === currentStepIndex"
+      [class.disabled]="i > currentStepIndex"
+      (click)="goToStep(i)"
+    >
+      {{ step.label }}
+    </li>
+  </ul>
+
+  <!-- Current step content -->
+  <div class="step-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Navigation buttons -->
+  <div class="nav-buttons">
+    <button (click)="goBack()" [disabled]="currentStepIndex === 0">
+      Back
+    </button>
+
+    <button
+      (click)="goNext()"
+      [disabled]="currentStepIndex === steps.length - 1"
+    >
+      Next
+    </button>
+  </div>
+</div>

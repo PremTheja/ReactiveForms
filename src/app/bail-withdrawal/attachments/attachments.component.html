@@ -1,0 +1,33 @@
+<h3>Attachments</h3>
+
+<p class="info">
+  Each file must not exceed 5MB (PDF only).
+</p>
+
+<div *ngFor="let att of attachments; let i = index" class="attachment-row">
+  <strong>
+    {{ att.type === 'BAIL_WITHDRAWAL' ? 'Bail withdrawal application *' : 'Other supporting documents' }}
+  </strong>
+
+  <!-- Select -->
+  <div *ngIf="att.status === 'idle' || att.status === 'error'">
+    <input type="file" accept=".pdf" (change)="onFileSelect($event, i)" />
+  </div>
+
+  <!-- Selected -->
+  <div *ngIf="att.status === 'selected'">
+    {{ att.fileName }} ({{ att.size }} bytes)
+    <button (click)="remove(i)">Remove</button>
+    <button (click)="upload(i)">Upload</button>
+  </div>
+
+  <!-- Uploading -->
+  <div *ngIf="att.status === 'uploading'">
+    Uploading...
+  </div>
+
+  <!-- Uploaded -->
+  <div *ngIf="att.status === 'uploaded'">
+    Uploaded ✅
+  </div>
+</div>
