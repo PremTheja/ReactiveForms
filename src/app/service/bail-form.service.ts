@@ -15,20 +15,18 @@ export interface Attachment {
 export class BailFormService {
   constructor(private fb: FormBuilder) {}
 
-  // One main form for the whole flow (all empty initially)
+  // One main form for the whole flow
   form = this.fb.group({
-    // User fills these
-    court: ['', Validators.required],
-    caseTitle: ['', Validators.required],
-    proceedingTitle: ['', Validators.required],
-    caseNumber: ['', Validators.required],
-    proceedingType: ['', Validators.required],
-    accusedName: ['', Validators.required],
+    // Prefilled case details (read-only in UI)
+    court: ['Supreme Court NSW'],
+    caseTitle: ['Bail Application - John Doe'],
+    proceedingTitle: ['State vs John Doe'],
+    caseNumber: ['SCN-12345'],
+    proceedingType: ['Bail Withdrawal'],
+    accusedName: ['John Doe'],
 
-    // Optional reference
-    referenceCode: [''],
-
-    // Mandatory reason
+    // User inputs
+    referenceCode: [''], // optional
     reasonForWithdrawal: ['', [Validators.required, Validators.maxLength(2000)]],
   });
 
@@ -92,7 +90,17 @@ export class BailFormService {
 
   // --- Optional: reset form (if user starts new form) ---
   resetAll() {
-    this.form.reset();
+    this.form.reset({
+      court: 'Supreme Court NSW',
+      caseTitle: 'Bail Application - John Doe',
+      proceedingTitle: 'State vs John Doe',
+      caseNumber: 'SCN-12345',
+      proceedingType: 'Bail Withdrawal',
+      accusedName: 'John Doe',
+      referenceCode: '',
+      reasonForWithdrawal: ''
+    });
+
     this.attachments = [
       { type: 'BAIL_WITHDRAWAL', required: true, status: 'idle' },
       { type: 'OTHER', required: false, status: 'idle' }

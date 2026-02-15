@@ -1,17 +1,79 @@
-<label>Court</label>
-<input type="text" formControlName="court" placeholder="Enter court name" />
+<h3>Form details</h3>
 
-<label>Case title</label>
-<input type="text" formControlName="caseTitle" placeholder="Enter case title" />
+<form [formGroup]="form" class="form-container">
 
-<label>Proceeding title</label>
-<input type="text" formControlName="proceedingTitle" placeholder="Enter proceeding title" />
+  <div class="form-field">
+    <label for="court">Court</label>
+    <input id="court" type="text" formControlName="court" placeholder="Enter court name" />
+    <small class="error" *ngIf="form.get('court')?.touched && form.get('court')?.invalid">
+      Court is required
+    </small>
+  </div>
 
-<label>Case/Proceeding number</label>
-<input type="text" formControlName="caseNumber" placeholder="Enter case number" />
+  <div class="form-field">
+    <label for="caseTitle">Case title</label>
+    <input id="caseTitle" type="text" formControlName="caseTitle" placeholder="Enter case title" />
+    <small class="error" *ngIf="form.get('caseTitle')?.touched && form.get('caseTitle')?.invalid">
+      Case title is required
+    </small>
+  </div>
 
-<label>Proceeding type</label>
-<input type="text" formControlName="proceedingType" placeholder="Enter proceeding type" />
+  <div class="form-field">
+    <label for="proceedingTitle">Proceeding title</label>
+    <input id="proceedingTitle" type="text" formControlName="proceedingTitle" placeholder="Enter proceeding title" />
+    <small class="error" *ngIf="form.get('proceedingTitle')?.touched && form.get('proceedingTitle')?.invalid">
+      Proceeding title is required
+    </small>
+  </div>
 
-<label>Accused name</label>
-<input type="text" formControlName="accusedName" placeholder="Enter accused name" />
+  <div class="form-field">
+    <label for="caseNumber">Case / Proceeding number</label>
+    <input id="caseNumber" type="text" formControlName="caseNumber" placeholder="Enter case number" />
+    <small class="error" *ngIf="form.get('caseNumber')?.touched && form.get('caseNumber')?.invalid">
+      Case number is required
+    </small>
+  </div>
+
+  <div class="form-field">
+    <label for="proceedingType">Proceeding type</label>
+    <input id="proceedingType" type="text" formControlName="proceedingType" placeholder="Enter proceeding type" />
+    <small class="error" *ngIf="form.get('proceedingType')?.touched && form.get('proceedingType')?.invalid">
+      Proceeding type is required
+    </small>
+  </div>
+
+  <div class="form-field">
+    <label for="accusedName">Accused name</label>
+    <input id="accusedName" type="text" formControlName="accusedName" placeholder="Enter accused name" />
+    <small class="error" *ngIf="form.get('accusedName')?.touched && form.get('accusedName')?.invalid">
+      Accused name is required
+    </small>
+  </div>
+
+  <div class="form-field">
+    <label for="referenceCode">Your reference (optional)</label>
+    <input id="referenceCode" type="text" formControlName="referenceCode" placeholder="Case1234" />
+    <small>
+      If you regularly deal with multiple cases, you can add your own reference code.
+    </small>
+  </div>
+
+  <div class="form-field">
+    <label for="reasonForWithdrawal">Reason for withdrawal *</label>
+    <textarea
+      id="reasonForWithdrawal"
+      rows="4"
+      formControlName="reasonForWithdrawal"
+      placeholder="Enter reason for withdrawal"
+    ></textarea>
+
+    <small class="error" *ngIf="form.get('reasonForWithdrawal')?.touched && form.get('reasonForWithdrawal')?.invalid">
+      Value cannot be blank (max 2000 characters)
+    </small>
+
+    <small>
+      {{ form.get('reasonForWithdrawal')?.value?.length || 0 }} / 2000 characters
+    </small>
+  </div>
+
+</form>
